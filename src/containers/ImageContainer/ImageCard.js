@@ -2,34 +2,42 @@ import React from 'react';
 import Audio from '../../components/Audio'
 
 
-const ImageCard = (props) => {
+class ImageCard extends React.Component {
 
-  const handleClick = (name) => {
-    return fetch('http://localhost:3000/getplanet', {
+  state  = {
+    freq:null
+  }
+
+  handleClick = (name) => {
+    return fetch('http://localhost:8000', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        name,
-        lat: props.lat,
-        long: props.long
+        planet:name,
+        lat: this.props.lat,
+        long:this.props.long
       })
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.setState({
+      freq:data[name]
+    }))
   }
+  render() {
 
   return (
-    <div onClick={() => handleClick(props.img.name)}>
-      <h3>{props.img.name}</h3>
-      <img src={props.img.url} alt={props.img.name} className="img-card"/>
+    <div onClick={()=> this.handleClick(this.props.img.name)}>
+      <h3>{this.props.img.name}</h3>
+      <img src={this.props.img.url} alt={this.props.img.name} className="img-card"/>
       <div className="btn">
-      <Audio />
+      <Audio freq={this.state.freq}/>
       </div>
     </div>
   )
+  }
 }
 
 export default ImageCard;

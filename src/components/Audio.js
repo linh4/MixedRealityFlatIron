@@ -35,12 +35,12 @@ class Audio extends React.Component {
   }
 
   handlePlay = () => {
-  this.getAudioFrequency(440.0)
+  this.getAudioFrequency(this.props.freq.ra_note)
 }
 
 
 handleStop = () => {
-  this.getAudioFrequency(440.0)
+  this.getAudioFrequency(this.props.freq.dec_note)
 }
 
 
