@@ -1,34 +1,36 @@
 import React from 'react'
 
-let context = new AudioContext()
-let o = context.createOscillator()
-o.type = "sine"
-o.connect(context.destination)
-
 
 class Audio extends React.Component {
 
   state = {
-    toggle:false,
-    resume:null
+    note:null
   }
-  handleClick = () => {
-    let change = !this.state.toggle
-    this.setState({
-      toggle:change
-    }, () => console.log(this.state.toggle) )
 
-    if (this.state.toggle === false) {
-      o.start()
-    } else {
-      o.stop()
-    }
-  }
+  handlePlay = () => {
+
+    let context = new AudioContext();
+    let o =  context.createOscillator();
+    o.type = "sine";
+    o.connect(context.destination)
+    o.start()
+
+    this.setState({
+      note:o
+    })
+}
+
+
+handleStop = () => {
+  this.state.note.stop();
+}
+
+
   render() {
     return(
       <div>
-        <button onClick={this.handleClick}> Play </button>
-        <button onClick={this.handleClick}> Stop </button>
+        <button onClick={this.handlePlay}> Play </button>
+        <button onClick={this.handleStop}> Stop </button>
       </div>
     )
   }
