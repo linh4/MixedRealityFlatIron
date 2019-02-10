@@ -22,7 +22,11 @@ const ImageCard = (props) => {
   return (
     <div onClick={() => handleClick(props.img.name)}>
       <h3>{props.img.name}</h3>
-      <img src={props.img.url} alt={props.img.name} />
+      <img src={props.img.url} alt={props.img.name} className="img-card"/>
+      <div className="btn">
+        <button>Play</button>
+        <button>Pause</button>
+      </div>
     </div>
   )
 }

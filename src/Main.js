@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import PlanetsContainer from './containers/PlanetsContainer'
-// import Location from './containers/Location'
 import ImageContainer from './containers/ImageContainer/ImageContainer'
 import {geolocated} from 'react-geolocated';
 
