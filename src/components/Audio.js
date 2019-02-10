@@ -11,9 +11,14 @@ class Audio extends React.Component {
 
     let context = new AudioContext();
     let o =  context.createOscillator();
-    o.type = "sine";
-    o.connect(context.destination)
-    o.start()
+    let  g = context.createGain()
+    let frequency = 4186.01
+    o.connect(g)
+    o.type = "sine"
+    g.connect(context.destination)
+    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 5)
+    o.frequency.value = frequency
+    o.start(0)
 
     this.setState({
       note:o
