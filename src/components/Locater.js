@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class Planets extends Component {
+class Locater extends Component {
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return(
       <div> Hello From the Inside!!! </div>
     )
   }
 }
 
-export default Planets
+export default Locater
