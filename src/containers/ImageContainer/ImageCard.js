@@ -1,4 +1,6 @@
 import React from 'react';
+import Audio from '../../components/Audio'
+
 
 const ImageCard = (props) => {
 
@@ -24,8 +26,7 @@ const ImageCard = (props) => {
       <h3>{props.img.name}</h3>
       <img src={props.img.url} alt={props.img.name} className="img-card"/>
       <div className="btn">
-        <button>Play</button>
-        <button>Pause</button>
+      <Audio />
       </div>
     </div>
   )
